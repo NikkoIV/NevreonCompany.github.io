@@ -4,54 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nevreon Company</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .menu ul li {
+            margin-left: 20px;
+        }
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .header-section {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .header-background {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .header-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: auto;
+        }
+        .content {
+            padding: 100px 20px 20px;
+            text-align: center;
+        }
+        .content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+            .menu {
+                display: none;
+                flex-direction: column;
+                background-color: #333;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                width: 200px;
+                padding: 10px;
+            }
+            .menu ul {
+                flex-direction: column;
+            }
+            .menu ul li {
+                margin: 10px 0;
+            }
+            .menu.active {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Бургер меню -->
-    <header class="burger-menu">
-        <div class="burger-icon">
-            <img src="burger-icon.png" alt="Меню">
-        </div>
-        <div class="black-panel"></div>
-
-        <!-- Выпадающее меню -->
-        <nav class="dropdown-menu">
+    <header class="navbar">
+        <div class="menu-icon" id="menuIcon">☰</div>
+        <nav class="menu" id="menu">
             <ul>
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#games">Игры</a></li>
-                <li><a href="#news">Новости</a></li>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Игры</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- Шапка сайта -->
     <section class="header-section">
-        <div class="header-background">
-            <img src="header-background.jpg" alt="Шапка сайта">
-        </div>
-        <div class="logo-overlay">
-            <img src="logo.png" alt="Логотип Nevreon Company">
-        </div>
+        <img src="background.jpg" alt="Фоновое изображение" class="header-background">
+        <img src="logo.png" alt="Логотип компании" class="header-logo">
     </section>
-
-    <!-- Информация о компании -->
-    <section class="about-section" id="home">
-        <h1>Добро пожаловать в Nevreon Company</h1>
+    <main class="content">
+        <h1>О компании Nevreon Company</h1>
         <p>
-            Мы — независимая игровая компания, создающая уникальные и захватывающие игры. 
-            Наша цель — подарить игрокам незабываемые эмоции и новые впечатления.
+            Nevreon Company — это инновационная игровая компания, которая специализируется на создании захватывающих игр для всех платформ. Мы стремимся к тому, чтобы каждый игрок мог погрузиться в уникальный мир наших игр и получить незабываемые впечатления.
         </p>
-    </section>
-
-    <!-- Кнопки социальных сетей -->
-    <section class="social-buttons">
-        <a href="https://www.youtube.com" target="_blank" class="button youtube">YouTube</a>
-        <a href="https://t.me/nevreoncompany" target="_blank" class="button telegram">Telegram</a>
-    </section>
-
-    <!-- Подвал -->
+    </main>
     <footer class="footer">
-        <p>Все права защищены &copy; 2023 Nevreon Company</p>
+        <p>Все права защищены &copy; 2023</p>
     </footer>
+    <script>
+        const menuIcon = document.getElementById('menuIcon');
+        const menu = document.getElementById('menu');
+        menuIcon.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
