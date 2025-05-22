@@ -1,139 +1,217 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nevreon Company</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            display: none;
-        }
-        .menu ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .menu ul li {
-            margin-left: 20px;
-        }
-        .menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .header-section {
-            position: relative;
-            text-align: center;
-            color: white;
-        }
-        .header-background {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .header-logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150px;
-            height: auto;
-        }
-        .content {
-            padding: 100px 20px 20px;
-            text-align: center;
-        }
-        .content h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        .content p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
-            .menu {
-                display: none;
-                flex-direction: column;
-                background-color: #333;
-                position: absolute;
-                top: 50px;
-                right: 0;
-                width: 200px;
-                padding: 10px;
-            }
-            .menu ul {
-                flex-direction: column;
-            }
-            .menu ul li {
-                margin: 10px 0;
-            }
-            .menu.active {
-                display: flex;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Nevreon Company</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+      animation: slideDown 1s ease-out;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .spacer {
+      height: 80px;
+    }
+
+    .description {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 20px;
+      flex-wrap: wrap;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .description img {
+      width: 200px;
+      height: auto;
+      margin: 10px;
+      border-radius: 10px;
+      animation: zoomIn 1s ease;
+    }
+
+    .description-text {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.2em;
+    }
+
+    .games-section {
+      padding: 20px;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    .game-card {
+      background: #222;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      animation: floatIn 1s ease;
+      transition: transform 0.3s;
+    }
+
+    .game-card:hover {
+      transform: scale(1.02);
+    }
+
+    .game-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+    }
+
+    .game-title {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+
+    .game-description {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #ccc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      font-size: 0.9em;
+      color: #aaa;
+      animation: fadeIn 2s ease;
+    }
+
+    /* Анимации */
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatIn {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .description {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .description img {
+        width: 150px;
+      }
+
+      .description-text {
+        font-size: 1em;
+        padding: 10px;
+      }
+
+      .game-card {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="navbar">
-        <div class="menu-icon" id="menuIcon">☰</div>
-        <nav class="menu" id="menu">
-            <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Игры</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="header-section">
-        <img src="background.jpg" alt="Фоновое изображение" class="header-background">
-        <img src="logo.png" alt="Логотип компании" class="header-logo">
-    </section>
-    <main class="content">
-        <h1>О компании Nevreon Company</h1>
-        <p>
-            Nevreon Company — это инновационная игровая компания, которая специализируется на создании захватывающих игр для всех платформ. Мы стремимся к тому, чтобы каждый игрок мог погрузиться в уникальный мир наших игр и получить незабываемые впечатления.
-        </p>
-    </main>
-    <footer class="footer">
-        <p>Все права защищены &copy; 2023</p>
-    </footer>
-    <script>
-        const menuIcon = document.getElementById('menuIcon');
-        const menu = document.getElementById('menu');
-        menuIcon.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-    </script>
+
+<header>
+  <img src="logo.png" alt="Nevreon Logo">
+</header>
+
+<div class="spacer"></div>
+
+<section class="description">
+  <img src="left-image.jpg" alt="Left Illustration">
+  <div class="description-text">
+    <h2>О компании Nevreon</h2>
+    <p>Nevreon Company — это независимая студия разработки игр, создающая уникальные игровые миры и захватывающие приключения.</p>
+  </div>
+  <img src="right-image.jpg" alt="Right Illustration">
+</section>
+
+<section class="games-section">
+  <h2>Наши игры</h2>
+
+  <div class="game-card">
+    <img src="game1.jpg" alt="Game 1">
+    <div class="game-title">Legends of Giants</div>
+    <div class="game-description">Эпическая битва гигантов в PvP-режиме. Улучшай уровень и побеждай!</div>
+  </div>
+
+  <div class="game-card">
+    <img src="game2.jpg" alt="Game 2">
+    <div class="game-title">Shadow Realms</div>
+    <div class="game-description">Погрузись в мрачный мир теней с глубоким сюжетом и сложными врагами.</div>
+  </div>
+</section>
+
+<footer>
+  Все права защищены © Nevreon Company
+</footer>
+
 </body>
 </html>
